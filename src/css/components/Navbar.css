@@ -1,0 +1,36 @@
+nav {
+  width: 100vw;
+  height: 50px;
+  background-color: #f7db69;
+
+  display: flex;
+  justify-content: center;
+}
+
+.nav-items {
+  padding: 0;
+  margin: 0;
+
+  width: 60%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nav-item {
+  list-style: none;
+  font-weight: bold;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: black;
+
+  transition: color 0.5s;
+}
+
+.nav-item a:hover {
+  color: white;
+}
