@@ -3,6 +3,9 @@ nav {
   height: 50px;
   background-color: #f7db69;
 
+  position: absolute;
+  z-index: 10;
+
   display: flex;
   justify-content: center;
 }
