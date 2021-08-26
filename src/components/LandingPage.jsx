@@ -2,27 +2,18 @@ import React, { useState, useEffect } from 'react';
 
 import '../css/components/LandingPage.css';
 import landingPageImg from '../images/LandingPage.png';
-import triangleImg from '../images/Triangle.png';
 
 function LandingPage() {
-    const [triangles, setTriangles] = useState([]);
-    let rotationOffset = 0;
+    const [trianglePositions, setTrianglePositions] = useState([]);
 
     useEffect(() => {
         generateTriangles();
         window.addEventListener('resize', generateTriangles);
-        const intervalId = setInterval(rotateTriangle, 100);
 
         return () => {
             window.removeEventListener('resize', generateTriangles);
-            clearInterval(intervalId);
         };
     }, []);
-
-    const rotateTriangle = () => {
-        rotationOffset += 1;
-        if(rotationOffset === 360) rotationOffset=0;
-    }
 
     const generateTriangles = () => {
         const { innerHeight, innerWidth } = window;
@@ -42,41 +33,28 @@ function LandingPage() {
                 x += increment;
                 increment = generateRandomCoordinate(base,deviation);
                 
-                const triangleStyle = {
-                    backgroundImage: `url(${triangleImg})`,
-                    backgroundPosition: 'center',
-                    backgroundSize: 'contain',
-                    backgroundRepeat: 'no-repeat',
-                    transform: `rotate(${generateRandomRotate()}deg)`,
-                    height: '15px',
-                    width: '15px',
-                    position: 'absolute',
+                const triangle = {
                     top: `${y}px`,
                     left: `${x}px`,
-                    zIndex: 5,
                 };
-                initTriangles.push(triangleStyle);
+                initTriangles.push(triangle);
             }
             x = 0;
         } 
         
-        setTriangles(initTriangles);
+        setTrianglePositions(initTriangles);
     }
 
     const generateRandomCoordinate = (base, deviation) => {
         return base + Math.floor(Math.random()*deviation);
     }
 
-    const generateRandomRotate = () => {
-        return Math.floor(Math.random()*360);
-    }
-
     return (
         <div className='landing'>
             <img className='landing-logo' src={landingPageImg} alt='Landing Page Logo' />
             <div className='triangles'>
-                {triangles.map((triangle, index) => {
-                    return <div key={index} style={triangle}></div>;
+                {trianglePositions.map((trianglePosition, index) => {
+                    return <div className='triangle' key={index} position={trianglePosition} style={trianglePosition}></div>
                 })}
             </div>
         </div>

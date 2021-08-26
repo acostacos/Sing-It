@@ -19,3 +19,25 @@
   height: 100%;
   position: absolute;
 }
+
+.triangle {
+  background-image: url("../../images/Triangle.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  z-index: 5;
+  animation: rotation infinite 0.5s linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
