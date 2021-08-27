@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
@@ -9,7 +10,9 @@ function App() {
   return (
     <div className="main">
       <Navbar />
-      <LandingPage />
+      <Route exact path='/'>
+        <LandingPage />
+      </Route>
     </div>
   );
 }
