@@ -8,6 +8,12 @@ nav {
 
   display: flex;
   justify-content: center;
+
+  transition: width 1s;
+}
+
+nav.minimized {
+  width: 0;
 }
 
 .nav-items {
@@ -36,4 +42,55 @@ nav {
 
 .nav-item a:hover {
   color: white;
+}
+
+#min-menu {
+  position: absolute;
+
+  opacity: 100%;
+  transition: opacity 1s 1s;
+}
+
+#min-menu.invisible {
+  opacity: 0%;
+}
+
+.min-menu-button {
+  border: none;
+  margin: 30px;
+  background-color: #ec1b4b;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.min-menu-body {
+  width: 20vw;
+  height: 100vh;
+  background-color: #f7db69;
+  margin: 0;
+
+  position: fixed;
+  top: 0;
+  left: -30vw;
+
+  transition: left 1s;
+}
+
+.min-menu-body.expanded {
+  left: 0;
+}
+
+.min-menu-icons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.min-menu-close-button {
+  border: none;
+  margin: 30px;
+  background-color: #f7db69;
+  font-size: 2em;
+  cursor: pointer;
 }

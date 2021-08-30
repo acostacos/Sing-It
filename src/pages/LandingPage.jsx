@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import '../css/components/LandingPage.css';
+import '../css/pages/LandingPage.css';
 import landingPageImg from '../images/LandingPage.png';
 
-function LandingPage() {
+function LandingPage(props) {
     const [trianglePositions, setTrianglePositions] = useState([]);
 
     useEffect(() => {
+        props.setIsNavMin(false);
         generateTriangles();
         window.addEventListener('resize', generateTriangles);
 
